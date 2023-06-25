@@ -41,8 +41,14 @@ public class HelloController {
         member.setId(id);
         member.setPassword(password);
 
-        response.setToken(memberservice.join(member));
-        response.setSuccess(true);
+        try {
+            response.setToken(memberservice.join(member));
+            response.setSuccess(true);
+        }
+        catch(Exception e){
+            response.setSuccess(false);
+            response.setToken("Duplicate ID");
+        }
 
         return response;
     }
