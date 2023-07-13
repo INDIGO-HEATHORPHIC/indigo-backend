@@ -53,6 +53,30 @@ public class HelloController {
         return response;
     }
 
+    @GetMapping("get_video")
+    @ResponseBody
+    public VideoInfo getVideoApi(@RequestParam("number") String number){
+        VideoInfo response = new VideoInfo();
+        int n = Integer.parseInt(number);
+        String[] urls = {"https://www.youtube.com/embed/Q3rZyswPArE", "https://www.youtube.com/embed/OzkJqjFwcyc", "https://www.youtube.com/embed/JcPhyzLDaQA", "https://www.youtube.com/embed/A06sJ4moRmA", "https://www.youtube.com/embed/BZWtYXFqewM", "https://www.youtube.com/embed/wklQdfUPt0g", "https://www.youtube.com/embed/E8V02ArInjY", "https://www.youtube.com/embed/6aa567C89pA", "https://www.youtube.com/embed/GdJwvZGpOXA", "https://www.youtube.com/embed/qJ4w6pYh5LU"};
+
+        response.setUrl(urls[n]);
+
+        return response;
+    }
+
+    static class VideoInfo{
+        private String url;
+
+        public String getUrl(){
+            return url;
+        }
+
+        public void setUrl(String url){
+            this.url = url;
+        }
+    }
+
     static class UserInfo{
         private boolean success;
         private String token;
